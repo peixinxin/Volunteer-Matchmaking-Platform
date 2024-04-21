@@ -1,0 +1,32 @@
+# Compiled class files
+/bin/
+/build/
+
+# Logs and databases
+/log/
+/data/
+
+# Gradle files
+.gradle/
+/build/
+
+# Local configuration file (contains sensitive info like passwords)
+**/application*.yml
+**/application*.properties
+
+# Eclipse, IntelliJ and VS Code files
+.classpath
+.project
+.settings/
+.idea/
+*.iml
+.vscode/
+
+# Mac OS files
+.DS_Store
+
+# Gradle Wrapper
+gradle/wrapper/gradle-wrapper.jar
+
+# Junit reports
+test-results/
