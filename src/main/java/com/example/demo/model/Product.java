@@ -9,21 +9,29 @@ public class Product {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String name;
+    private String category;
     private String description;
     private double price;
     private int quantity;
     private String image;
 
+    @ManyToOne
+    @JoinColumn(name = "user_id", referencedColumnName = "id", nullable = false)
+    private User user;
+
     public Product() {
     }
 
-    public Product(Long id, String name, String description, double price, int quantity, String image) {
+    public Product(Long id, String name, String category, String description, double price, int quantity, String image,
+            User user) {
         this.id = id;
         this.name = name;
+        this.category = category;
         this.description = description;
         this.price = price;
         this.quantity = quantity;
         this.image = image;
+        this.user = user;
     }
 
     public Long getId() {
@@ -40,6 +48,14 @@ public class Product {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 
     public String getDescription() {
@@ -72,5 +88,13 @@ public class Product {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }

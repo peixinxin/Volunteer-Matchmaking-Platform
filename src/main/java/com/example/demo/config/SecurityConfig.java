@@ -40,11 +40,15 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/register").permitAll()
                         .anyRequest().permitAll())
                 .formLogin(formLogin -> formLogin
+                        .loginPage("/login")
                         .usernameParameter("email")
                         .defaultSuccessUrl("/users", true)
                         .permitAll())
                 .logout(logout -> logout
-                        .logoutUrl("/")
+                        .logoutUrl("/api/user/logout")
+                        .logoutSuccessUrl("/login")
+                        .invalidateHttpSession(true)
+                        .deleteCookies("JSESSIONID")
                         .permitAll());
         http.csrf(csrf -> csrf.disable());
         http.cors(cors -> cors.disable());
