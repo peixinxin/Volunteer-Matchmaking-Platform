@@ -5,13 +5,12 @@ import java.util.Collection;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
-import com.example.demo.model.User;
+public class CustomUserDetails<T> implements UserDetails {
 
-public class CustomUserDetails implements UserDetails {
+    //private User user;
+    private T user;
 
-    private User user;
-
-    public CustomUserDetails(User user) {
+    public CustomUserDetails(T user) {
         this.user = user;
     }
 
@@ -22,12 +21,26 @@ public class CustomUserDetails implements UserDetails {
 
     @Override
     public String getPassword() {
-        return user.getPassword();
+        if (user instanceof com.example.demo.model.Volunteer) {
+            return ((com.example.demo.model.Volunteer) user).getPassword();
+        } else if (user instanceof com.example.demo.model.Organization) {
+            return ((com.example.demo.model.Organization) user).getPassword();
+        } else if (user instanceof com.example.demo.model.Supervisor) {
+            return ((com.example.demo.model.Supervisor) user).getPassword();
+        }
+        return null;
     }
 
     @Override
     public String getUsername() {
-        return user.getEmail();
+        if (user instanceof com.example.demo.model.Volunteer) {
+            return ((com.example.demo.model.Volunteer) user).getEmail();
+        } else if (user instanceof com.example.demo.model.Organization) {
+            return ((com.example.demo.model.Organization) user).getEmail();
+        } else if (user instanceof com.example.demo.model.Supervisor) {
+            return ((com.example.demo.model.Supervisor) user).getEmail();
+        }
+        return null;
     }
 
     @Override
@@ -50,7 +63,5 @@ public class CustomUserDetails implements UserDetails {
         return true;
     }
 
-    public String getNickname() {
-        return user.getNickname();
-    }
+
 }

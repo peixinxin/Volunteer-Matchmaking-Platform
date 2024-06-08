@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>志工媒合平台</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link href="/static/styles.css" rel="stylesheet" />
+    <style>
+        body { background-color: #f0f5f9; }
+        .header { background: #52616a; padding: 20px; text-align: center; font-size: 32px; color: white; margin-bottom: 20px; }
+        .container-fluid { padding: 20px; }
+        .card { border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); background-color: #fff; padding: 20px; margin-bottom: 20px; }
+        .avatar { width: 40px; height: auto; border-radius: 50%; margin-bottom: 10px; }
+        .input-group { margin-top: 10px; margin-bottom: 10px; }
+        .btn-pink { background-color: #52616a; color: white; border: none; }
+        .btn-pink:hover { background-color: #52616a; }
+        .footer { background-color: #52616a; color: white; text-align: center; padding: 20px; margin-top: 20px; border-top: 2px solid #52616a; }
+        .btn-success, .btn-danger { font-size: 18px; }
+        .role{color: gray}
+    </style>
+</head>
+<body>
+    <!-- Responsive navbar-->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#" id = "userhomeLink">志工媒合平台</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link" href="#">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                            </svg>
+                        </a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="eventVolunLink">志工活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="discussSecLink">討論區</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" id="loginLink">登出</a></li>
+                    <li class="nav-item"><a class="navbar-text nav-link" aria-current="page" href="#" id="profileLink">Username</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Header -->
+    <div class="header">討論區</div>
+<!-- Search widget-->
+<div class=" card mb-4">
+    <div class="card-header">搜尋</div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="location" class="form-label">地點：</label>
+                    <div class="input-group">
+                        <select name="location" id="location" class="form-select">
+                            <option value="all">不限</option>
+                            <option value="north">北部</option>
+                            <option value="center">中部</option>
+                            <option value="south">南部</option>
+                            <option value="east">東部</option>
+                            <option value="outlyingIslands">離島</option>
+                            <option value="foreign">國外</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="fee" class="form-label">費用：NT$</label>
+                    <div class="input-group">
+                        <select name="min" id="min" class="form-select">
+                            <option value="0">0</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="2000">2000</option>
+                            <option value="5000">5000</option>
+                            <option value="10000">10000</option>
+                        </select>
+                        <span class="input-group-text">至</span>
+                        <select name="max" id="max" class="form-select">
+                            <option value="0">0</option>
+                            <option value="100">100</option>
+                            <option value="500">500</option>
+                            <option value="1000">1000</option>
+                            <option value="2000">2000</option>
+                            <option value="5000">5000</option>
+                            <option value="10000">10000</option>
+                            <option value="infinite">不限</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="eventDate" class="form-label">日期：</label>
+                    <div class="input-group">
+                        <input type="date" id="eventDateStart" name="eventDateStart" class="form-control">
+                        <span class="input-group-text">至</span>
+                        <input type="date" id="eventDateEnd" name="eventDateEnd" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search">
+                        <button class="btn btn-pink p-2" id="button-search" type="button">查詢</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Content -->
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="row-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" alt="User Avatar" class="avatar">
+                    <h7>John Doe</h7>
+                    </div>
+                    <div class="p-2">@event@organization
+                        #question/good/bad
+                        活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價</div>
+                    <div>
+                        <button class="btn btn-success">👍</button>
+                        <button class="btn btn-danger">👎</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="row-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" alt="Dan Williams" class="avatar">
+                    <h7>Dan Williams</h7>
+                    </div>
+                    <div class="p-2">@event@organization
+                        #question/good/bad
+                        活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價</div>
+                    <div>
+                        <button class="btn btn-success">👍</button>
+                        <button class="btn btn-danger">👎</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="row-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" alt="Dan Williams" class="avatar">
+                    <h7>Dan Williams</h7>
+                    </div>
+                    <div class="p-2">@event@organization
+                        #question/good/bad
+                        活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價</div>
+                    <div>
+                        <button class="btn btn-success">👍</button>
+                        <button class="btn btn-danger">👎</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="row-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" alt="Dan Williams" class="avatar">
+                    <h7>Dan Williams</h7>
+                    </div>
+                    <div class="p-2">@event@organization
+                        #question/good/bad
+                        活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價</div>
+                    <div>
+                        <button class="btn btn-success">👍</button>
+                        <button class="btn btn-danger">👎</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card text-center">
+                    <div class="row-4">
+                    <img src="https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg" alt="Dan Williams" class="avatar">
+                    <h7>Dan Williams</h7>
+                    </div>
+                    <div class="p-2">@event@organization
+                        #question/good/bad
+                        活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價活動評價</div>
+                        <div>
+                            <button class="btn btn-success">👍</button>
+                            <button class="btn btn-danger">👎</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Footer -->
+        <div class="footer">Copyright &copy; Volunteer Platform 2024</div>
+        <!-- Bootstrap core JavaScript -->
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script src="../static/discussSec.js"></script>
+    </body>
+    </html>

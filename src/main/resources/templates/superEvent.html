@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理員首頁</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #ffffff; /* 輕淡的藍色背景 */
+        }
+        .card {
+            margin-bottom: 20px; /* 卡片之間的距離 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 卡片陰影 */
+            border: none; /* 移除卡片邊框 */
+            border-radius: 10px; /* 卡片圓角 */
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"id="userhomeLink">志工媒合平台</a>
+            <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" href="#" id="superEventLink">審核志工活動</a></li>
+                    <li class="nav-item"><a class="nav-link" aria-current="page" href="#" id="superProfileLink">superName</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content section -->
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h2 class="mb-4">審核志工活動</h2>
+                <div id="superContainer"></div> <!-- 父容器用于动态添加活动卡片 -->
+                <template id="superTemplate">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">活動名稱1</h5>
+                        <p class="card-text">這是活動的描述，包含了有關活動的詳細信息和參加說明。</p>
+                        <p class="card-text"><small class="text-muted">時間: 2024-06-01</small></p>
+                        <a href="#" class="btn btn-primary" >查看詳情</a>
+                    </div>
+                </div>
+                </template>
+                
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/superEvent.js"></script>
+</body>
+</html>

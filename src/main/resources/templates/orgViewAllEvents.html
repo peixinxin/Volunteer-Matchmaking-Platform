@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>查看所有活動</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #d9e2f3; /* 輕淡的藍色背景 */
+        }
+        .container {
+            padding-top: 80px; /* 加大上邊距以避免導航欄遮擋內容 */
+        }
+        .sidebar {
+            position: fixed;
+            top: 56px; /* 位於導航欄下方 */
+            right: 0;
+            width: 20%;
+            height: calc(100% - 56px); /* 減去導航欄高度的側邊欄高度 */
+            background-color: #f8f9fa;
+            border-left: 1px solid #dee2e6;
+            padding: 20px;
+            overflow: auto;
+        }
+        .card {
+            margin-bottom: 20px; /* 卡片之間的距離 */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 卡片陰影 */
+            border: none; /* 移除卡片邊框 */
+            border-radius: 10px; /* 卡片圓角 */
+        }
+        .btn-sidebar {
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            font-size: 0.875rem;
+            padding: 8px 12px;
+        }
+        .btn-sidebar:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .submenu {
+            display: none;
+            background-color: #e9ecef;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+        .submenu a {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 0.875rem;
+            color: #007bff;
+        }
+        .submenu a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#"id="userhomeLink">志工媒合平台</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/viewAllEvents">所有活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orgEditEvent">編輯活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orgVerifyVolunteer">審理申請</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orgAddEvent">發起新活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/viewAllEvents">金流管理</a></li>
+                    <li class="nav-item"><a class="navbar-text nav-link active" aria-current="page" href="/orgProfile" id="orgProfileLink">OrgName</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Main content section -->
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mb-4">所有活動</h2>
+                <div id="eventsContainer"></div> <!-- 父容器用于动态添加活动卡片 -->
+                    <template id="eventTemplate">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">活動名稱</h5>
+                                <p class="card-text">這是活動的描述，包含了有關活動的詳細信息和參加說明。</p>
+                                <p class="card-text"><small class="text-muted">時間</small></p>
+                                <a href="#" class="btn btn-primary">查看詳情</a>
+                            </div>
+                        </div>
+                    </template>
+                </div> 
+            <div class="col-md-4 sidebar">
+                <h5 class="mb-4">快捷連結</h5>
+                <a href="#" class="btn btn-sidebar" id="viewAllEventsLink">查看所有活動</a>
+                <div id="viewEventsSubmenu" class="submenu">
+                    <a href="#" id="editEventLink">編輯活動資訊</a>
+                    <div>
+                    <a href="#" id="verifyVolunteerLink">審理志工申請</a>
+                    </div>
+                </div>
+                <a href="#" class="btn btn-sidebar" id="addEventLink">發起新活動</a>
+                <a href="#" class="btn btn-sidebar" id="orgViewAllEventsLink">報名金流管理</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/orgViewAllEvents.js"></script>
+</body>
+</html>

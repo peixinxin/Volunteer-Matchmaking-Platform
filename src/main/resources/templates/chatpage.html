@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>模擬 LINE 聊天室</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+        }
+        #chat-container {
+            display: flex;
+            flex-direction: column;
+            background-color: #f0f2f5;
+            border-left: solid 1px #ddd;
+            border-right: solid 1px #ddd;
+            margin: auto;
+            width: 70%; /* Adjust width according to your design preference */
+            max-width: 600px; /* Maximum width */
+        }
+        #chat-header {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            font-size: 16px;
+            width: 100%;
+        }
+        #messages {
+            flex-grow: 1;
+            padding: 10px;
+            overflow-y: auto;
+        }
+        .message {
+            margin-bottom: 12px;
+            display: flex;
+            width: 100%;
+        }
+        .mine, .theirs {
+            align-items: flex-end;
+            flex-direction: column;
+            width: 70%;
+        }
+        .mine {
+            align-items: flex-end;
+        }
+        .theirs {
+            align-items: flex-start;
+        }
+        .message p {
+            padding: 8px 12px;
+            border-radius: 18px;
+            color: white;
+        }
+        .mine p {
+            background-color: #007bff;
+        }
+        .theirs p {
+            background-color: #666;
+        }
+        .message-info {
+            font-size: 12px;
+            color: #666;
+            margin: 4px 0;
+        }
+        #input-area {
+            border-top: solid 1px #ccc;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+        }
+        #message-input {
+            flex-grow: 1;
+            margin-right: 8px; /* Space between input field and button */
+        }
+        #send-button {
+            flex-shrink: 0; /* Prevent button from shrinking */
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+          <a class="navbar-brand" href="#!">志工媒合平台</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                        class="bi bi-house-door-fill" viewBox="0 0 16 16">
+                        <path
+                            d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5" />
+                    </svg>
+                </a></li>
+              
+              <li class="nav-item"><a class="nav-link" href="#">志工活動</a></li>
+              <li class="nav-item"><a class="nav-link" href="#">討論區</a></li>
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="#">登出</a>
+              </li>
+              <a class="navbar-text nav-link" aria-current="page" href="#">Username</a>
+            </ul>
+          </div>
+        </div>
+    </nav>
+    <div id="chat-container" class="container">
+        <div id="chat-header">Chat Partner</div>
+        <div id="messages"></div>
+        <div id="input-area">
+            <input type="text" id="message-input" class="form-control" placeholder="Type a message..." autofocus>
+            <button id="send-button" class="btn btn-primary">Send</button>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('send-button').addEventListener('click', sendMessage);
+        document.getElementById('message-input').addEventListener('keypress', function(event) {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        function sendMessage() {
+            const input = document.getElementById('message-input');
+            const message = input.value.trim();
+            if (message !== '') {
+                const now = new Date();
+                const time = now.getHours() + ':' + now.getMinutes().toString().padStart(2, '0');
+
+                const msgElement = document.createElement('div');
+                msgElement.className = 'message mine';
+                msgElement.innerHTML = `<p>${message}</p>
+                                        <div class="message-info">You, ${time}</div>`;
+                document.getElementById('messages').appendChild(msgElement);
+                input.value = '';
+                document.getElementById('messages').scrollTop = document.getElementById('messages').scrollHeight;
+            }
+        }
+    </script>
+</body>
+</html>

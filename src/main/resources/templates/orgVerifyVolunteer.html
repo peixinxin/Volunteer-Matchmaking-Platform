@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>審理志工申請</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* 保持現有樣式不變 */
+        body {
+            background-color: #d9e2f3;
+        }
+        .sidebar {
+            position: fixed;
+            top: 56px;
+            right: 0;
+            width: 20%;
+            height: calc(100% - 56px);
+            background-color: #f8f9fa;
+            border-left: 1px solid #dee2e6;
+            padding: 20px;
+            overflow: auto;
+        }
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+            border-radius: 10px;
+        }
+        .btn-sidebar {
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: left;
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+            font-size: 0.875rem;
+            padding: 8px 12px;
+        }
+        .btn-sidebar:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .submenu {
+            display: none;
+            background-color: #e9ecef;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            padding-left: 15px;
+        }
+        .submenu a {
+            padding-top: 5px;
+            padding-bottom: 5px;
+            font-size: 0.875rem;
+            color: #007bff;
+        }
+        .submenu a:hover {
+            text-decoration: underline;
+        }
+        .applicant-card {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .applicant-card h5 {
+            margin-bottom: 10px;
+        }
+        .applicant-card p {
+            margin-bottom: 5px;
+        }
+        .applicant-card small {
+            color: #6c757d;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: space-between;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">志工媒合平台</a>
+            <button
+                class="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+            >
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/viewAllEvents">所有活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orgEditEvent">編輯活動</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="/orgVerifyVolunteer">審理申請</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/orgAddEvent">發起新活動</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/managePayments">金流管理</a></li>
+                    <li class="nav-item"><a class="navbar-text nav-link" aria-current="page" href="#" id="orgProfileLink">OrgName</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Main content section -->
+    <br><br>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+                <h2 class="mb-4">志工申請</h2>
+                <div id="applicantsContainer">
+                    <template id="applicantsTemplate">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title">申請者1</h5>
+                                <p class="card-text">eventid</p>
+                                <p class="card-text"><small class="text-muted">auditStatus</small></p>
+                                <a href="#" class="btn btn-primary">審核</a>
+                            </div>
+                        </div>
+                    </template>   
+                </div>
+            </div> <!-- 这里是动态内容插入的位置 -->
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/orgVerifyVolunteer.js"></script>
+</body>
+</html>
+
+
+
